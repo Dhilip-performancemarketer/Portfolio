@@ -1,608 +1,104 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dhilip | Digital Marketing Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>Dhilip | Digital Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #181818;
-    --accent: #00e5a0;
-    --accent2: #0af;
-    --text: #f0f0f0;
-    --muted: #888;
-    --border: rgba(255,255,255,0.07);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 5vw;
-    background: rgba(10,10,10,0.92);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(10px);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.3rem;
-    color: var(--accent);
-    letter-spacing: -0.02em;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 5vw 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-grid-line {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image:
-      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-  }
-  .hero-tag {
-    display: inline-block;
-    background: rgba(0,229,160,0.1);
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    border: 1px solid rgba(0,229,160,0.2);
-    margin-bottom: 1.8rem;
-    width: fit-content;
-  }
-  .hero-name {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-  }
-  .hero-name span { color: var(--accent); }
-  .hero-sub {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: var(--muted);
-    font-weight: 300;
-    max-width: 560px;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-  }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.85rem 2rem;
-    border-radius: 100px;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.85rem 2rem;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-outline:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-1px); }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    margin-top: 5rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.05em; }
-
-  /* SECTIONS */
-  section { padding: 6rem 5vw; }
-  .section-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.8rem;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-  }
-  .section-sub {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 560px;
-    margin-bottom: 3rem;
-    font-weight: 300;
-  }
-
-  /* SERVICES */
-  #services { background: var(--surface); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .service-card {
-    background: var(--surface);
-    padding: 2.5rem;
-    transition: background 0.2s;
-  }
-  .service-card:hover { background: var(--surface2); }
-  .service-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(0,229,160,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.4rem;
-    font-size: 1.4rem;
-  }
-  .service-title {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.01em;
-  }
-  .service-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
-
-  /* TOOLS */
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-  }
-  .tool-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    text-align: center;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-  .tool-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
-  .tool-icon { font-size: 2rem; }
-  .tool-name { font-size: 0.85rem; font-weight: 500; color: var(--text); }
-  .tool-level {
-    font-size: 0.72rem;
-    color: var(--accent);
-    background: rgba(0,229,160,0.1);
-    padding: 0.2rem 0.6rem;
-    border-radius: 100px;
-    letter-spacing: 0.05em;
-  }
-
-  /* WORK / CASE STUDIES */
-  #work { background: var(--surface); }
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-  .case-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: border-color 0.25s, transform 0.2s;
-  }
-  .case-card:hover { border-color: rgba(0,229,160,0.25); transform: translateY(-3px); }
-  .case-tag {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    background: rgba(0,170,255,0.1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 100px;
-    margin-bottom: 1.2rem;
-  }
-  .case-title {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.7rem;
-    letter-spacing: -0.01em;
-  }
-  .case-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.65; }
-  .case-metrics { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .metric {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-  .metric-val {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -0.03em;
-  }
-  .metric-key { font-size: 0.75rem; color: var(--muted); }
-
-  /* ABOUT */
-  .about-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .about-avatar {
-    width: 100%;
-    aspect-ratio: 1;
-    max-width: 360px;
-    background: var(--surface);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 6rem;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -0.05em;
-  }
-  .about-text p { color: var(--muted); margin-bottom: 1rem; font-weight: 300; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-  .skill-tag {
-    font-size: 0.82rem;
-    padding: 0.35rem 0.9rem;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--text);
-    font-weight: 400;
-  }
-
-  /* CONTACT */
-  #contact { background: var(--surface); }
-  .contact-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 3.5rem;
-    max-width: 680px;
-    text-align: center;
-  }
-  .contact-email {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .contact-links { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
-
-  /* FOOTER */
-  footer {
-    padding: 2rem 5vw;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.82rem;
-    color: var(--muted);
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up { animation: fadeUp 0.7s ease both; }
-  .fade-up:nth-child(2) { animation-delay: 0.1s; }
-  .fade-up:nth-child(3) { animation-delay: 0.2s; }
-  .fade-up:nth-child(4) { animation-delay: 0.3s; }
-
-  /* RESPONSIVE */
-  @media (max-width: 700px) {
-    .about-layout { grid-template-columns: 1fr; }
-    .about-avatar { max-width: 160px; font-size: 3.5rem; }
-    nav { padding: 1rem 4vw; }
-    .nav-links { gap: 1.2rem; }
-  }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#0a0a0a;color:#fff}
+nav{display:flex;justify-content:space-between;padding:20px 8%;background:#111;position:sticky;top:0}
+nav a{text-decoration:none;color:white;margin-left:20px}
+.hero{display:flex;align-items:center;justify-content:space-between;padding:80px 8%;min-height:100vh;background:linear-gradient(135deg,#0a0a0a,#16213e)}
+.hero img{width:320px;height:320px;border-radius:50%;object-fit:cover;border:5px solid #00d4ff}
+.hero h1{font-size:60px}
+.hero span{color:#00d4ff}
+.btn{padding:12px 25px;background:#00d4ff;color:black;text-decoration:none;border-radius:30px;display:inline-block;margin:10px;font-weight:600}
+.section{padding:80px 8%}
+.title{text-align:center;font-size:35px;margin-bottom:40px;color:#00d4ff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#151515;padding:25px;border-radius:20px;transition:.3s}
+.card:hover{transform:translateY(-8px)}
+.skills span{display:inline-block;background:#222;padding:10px 15px;border-radius:30px;margin:8px}
+.screenshots img{width:100%;border-radius:15px}
+form input,textarea{width:100%;padding:15px;margin:10px 0;border:none;border-radius:10px}
+form button{width:100%;padding:15px;border:none;background:#00d4ff;border-radius:10px;font-weight:bold}
+footer{text-align:center;padding:30px;background:#111}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">Dhilip.</div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<h2>Dhilip.</h2>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#work">Work</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid-line"></div>
-  <div class="hero-tag">Digital Marketing Specialist</div>
-  <h1 class="hero-name fade-up">Hi, I'm<br><span>Dhilip.</span></h1>
-  <p class="hero-sub fade-up">I help brands grow with paid advertising, social media strategy, and data-driven lead generation campaigns that actually convert.</p>
-  <div class="hero-ctas fade-up">
-    <a href="#work" class="btn-primary">View my work</a>
-    <a href="#contact" class="btn-outline">Get in touch</a>
-  </div>
-  <div class="hero-stats fade-up">
-    <div>
-      <div class="stat-num">4+</div>
-      <div class="stat-label">Campaigns run</div>
-    </div>
-    <div>
-      <div class="stat-num">3x</div>
-      <div class="stat-label">Avg. ROAS achieved</div>
-    </div>
-    <div>
-      <div class="stat-num">500+</div>
-      <div class="stat-label">Leads generated</div>
-    </div>
-  </div>
+<section class="hero">
+<div>
+<h1>Hello, I'm <span>Dhilip</span></h1>
+<h3>Digital Marketing Executive | CSE Background</h3>
+<p>Focused on Social Media Marketing, Lead Generation, Shopify and Content Strategy.</p>
+<a class="btn" href="YOUR_LINKEDIN_URL">LinkedIn</a>
+<a class="btn" href="resume.pdf">Download Resume</a>
+</div>
+<img src="profile.jpg">
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label">What I do</div>
-  <h2 class="section-title">Services</h2>
-  <p class="section-sub">End-to-end digital marketing solutions — from strategy to execution and reporting.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">📣</div>
-      <div class="service-title">Meta Ads</div>
-      <div class="service-desc">Facebook & Instagram ad campaigns — audience research, creative strategy, A/B testing, and performance optimization to maximize ROAS.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔍</div>
-      <div class="service-title">Google Ads</div>
-      <div class="service-desc">Search, Display, and YouTube campaigns. Keyword strategy, Quality Score improvement, and conversion tracking setup.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📱</div>
-      <div class="service-title">Social Media Marketing</div>
-      <div class="service-desc">Content calendar planning, community management, and organic growth strategy across Instagram, Facebook, and LinkedIn.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🎯</div>
-      <div class="service-title">Lead Generation</div>
-      <div class="service-desc">Full-funnel lead gen campaigns — landing pages, lead magnets, form optimization, and CRM integration for consistent pipeline growth.</div>
-    </div>
-  </div>
+<section class="section" id="about">
+<h2 class="title">About Me</h2>
+<div class="card">
+<p>Computer Science Engineering student with hands-on experience in Shopify store management, digital marketing, content planning and social media growth.</p>
+</div>
 </section>
 
-<!-- CASE STUDIES -->
-<section id="work">
-  <div class="section-label">Case studies</div>
-  <h2 class="section-title">Campaign results</h2>
-  <p class="section-sub">Real campaigns, real numbers. Here's what I've achieved for brands across industries.</p>
-  <div class="work-grid">
-    <div class="case-card">
-      <span class="case-tag">Meta Ads</span>
-      <div class="case-title">E-commerce Brand — Fashion</div>
-      <div class="case-desc">Ran a full-funnel Meta Ads campaign targeting women aged 18–35. Used lookalike audiences and dynamic product ads. Optimized weekly based on ROAS data from Meta Ads Manager.</div>
-      <div class="case-metrics">
-        <div class="metric"><div class="metric-val">3.8x</div><div class="metric-key">ROAS</div></div>
-        <div class="metric"><div class="metric-val">42%</div><div class="metric-key">Lower CPC</div></div>
-        <div class="metric"><div class="metric-val">₹15k</div><div class="metric-key">Ad spend</div></div>
-      </div>
-    </div>
-    <div class="case-card">
-      <span class="case-tag">Google Ads</span>
-      <div class="case-title">Local Service Business — Coaching</div>
-      <div class="case-desc">Launched Google Search campaign for an online coaching business. Researched high-intent keywords, wrote ad copy, and set up conversion tracking via Google Analytics.</div>
-      <div class="case-metrics">
-        <div class="metric"><div class="metric-val">4.5%</div><div class="metric-key">CTR</div></div>
-        <div class="metric"><div class="metric-val">62</div><div class="metric-key">Leads in 30 days</div></div>
-        <div class="metric"><div class="metric-val">₹120</div><div class="metric-key">Cost per lead</div></div>
-      </div>
-    </div>
-    <div class="case-card">
-      <span class="case-tag">Lead Generation</span>
-      <div class="case-title">Real Estate — Residential Plots</div>
-      <div class="case-desc">Built a lead generation funnel using Meta lead forms + WhatsApp follow-up sequence. Targeted income-qualified audiences in Chennai and surrounding areas.</div>
-      <div class="case-metrics">
-        <div class="metric"><div class="metric-val">180+</div><div class="metric-key">Leads generated</div></div>
-        <div class="metric"><div class="metric-val">₹85</div><div class="metric-key">Cost per lead</div></div>
-        <div class="metric"><div class="metric-val">22%</div><div class="metric-key">Lead-to-call rate</div></div>
-      </div>
-    </div>
-    <div class="case-card">
-      <span class="case-tag">SMM</span>
-      <div class="case-title">Brand Page — Organic Growth</div>
-      <div class="case-desc">Managed Instagram and Facebook pages for a local food brand. Created content calendar with Canva, wrote captions, and grew engagement through reels and stories strategy.</div>
-      <div class="case-metrics">
-        <div class="metric"><div class="metric-val">1.2k</div><div class="metric-key">Followers in 3 months</div></div>
-        <div class="metric"><div class="metric-val">8.4%</div><div class="metric-key">Avg engagement rate</div></div>
-        <div class="metric"><div class="metric-val">24</div><div class="metric-key">Posts / month</div></div>
-      </div>
-    </div>
-  </div>
+<section class="section" id="skills">
+<h2 class="title">Skills</h2>
+<div class="skills">
+<span>Lead Generation</span>
+<span>Social Media Marketing</span>
+<span>Shopify</span>
+<span>Content Planning</span>
+<span>Meta Ads</span>
+<span>Funnel Optimization</span>
+</div>
 </section>
 
-<!-- TOOLS -->
-<section id="tools">
-  <div class="section-label">Tech stack</div>
-  <h2 class="section-title">Tools I use</h2>
-  <p class="section-sub">Platforms and tools I work with daily to plan, execute, and measure campaigns.</p>
-  <div class="tools-grid">
-    <div class="tool-card">
-      <div class="tool-icon">📊</div>
-      <div class="tool-name">Google Analytics</div>
-      <div class="tool-level">Advanced</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">🎨</div>
-      <div class="tool-name">Canva</div>
-      <div class="tool-level">Advanced</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">📣</div>
-      <div class="tool-name">Meta Ads Manager</div>
-      <div class="tool-level">Advanced</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">🔍</div>
-      <div class="tool-name">Google Ads</div>
-      <div class="tool-level">Advanced</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">📈</div>
-      <div class="tool-name">Google Search Console</div>
-      <div class="tool-level">Intermediate</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">📋</div>
-      <div class="tool-name">Meta Business Suite</div>
-      <div class="tool-level">Advanced</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">🗓️</div>
-      <div class="tool-name">Buffer / Later</div>
-      <div class="tool-level">Intermediate</div>
-    </div>
-    <div class="tool-card">
-      <div class="tool-icon">📧</div>
-      <div class="tool-name">Mailchimp</div>
-      <div class="tool-level">Intermediate</div>
-    </div>
-  </div>
+<section class="section" id="work">
+<h2 class="title">Campaign Screenshots</h2>
+<div class="grid screenshots">
+<div class="card"><img src="meta1.jpg"><p>Meta Ads Dashboard</p></div>
+<div class="card"><img src="meta2.jpg"><p>Campaign Results</p></div>
+</div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-layout">
-    <div class="about-avatar">DK</div>
-    <div class="about-text">
-      <div class="section-label">About me</div>
-      <h2 class="section-title">Dhilip</h2>
-      <p>I'm a digital marketing specialist focused on performance-driven campaigns — Meta Ads, Google Ads, social media management, and lead generation. I love combining creativity with data to build campaigns that actually produce results.</p>
-      <p>Based in Chennai, Tamil Nadu. I'm currently looking for opportunities where I can bring measurable impact through smart digital marketing strategy.</p>
-      <p>When I'm not running campaigns, I'm studying the latest trends in paid advertising, testing new audience strategies, and building my knowledge in marketing analytics.</p>
-      <div class="skill-tags">
-        <span class="skill-tag">Meta Ads</span>
-        <span class="skill-tag">Google Ads</span>
-        <span class="skill-tag">Social Media Marketing</span>
-        <span class="skill-tag">Lead Generation</span>
-        <span class="skill-tag">Canva</span>
-        <span class="skill-tag">Google Analytics</span>
-        <span class="skill-tag">Audience Research</span>
-        <span class="skill-tag">A/B Testing</span>
-        <span class="skill-tag">Content Strategy</span>
-        <span class="skill-tag">Campaign Reporting</span>
-      </div>
-    </div>
-  </div>
+<section class="section">
+<h2 class="title">Certifications & Learning</h2>
+<div class="grid">
+<div class="card">Digital Marketing Learning</div>
+<div class="card">Meta Ads Fundamentals</div>
+<div class="card">Shopify Store Management</div>
+</div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Let's connect</div>
-  <h2 class="section-title">Get in touch</h2>
-  <div class="contact-box">
-    <p style="color: var(--muted); margin-bottom: 1.5rem; font-weight: 300;">Open to full-time roles, freelance projects, and internships in digital marketing. Let's talk about how I can help grow your brand.</p>
-    <a href="mailto:your.email@gmail.com" class="contact-email">your.email@gmail.com</a>
-    <div class="contact-links">
-      <a href="https://linkedin.com/in/yourprofile" class="btn-primary" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="resume.pdf" class="btn-outline" target="_blank">Download Resume</a>
-    </div>
-    <p style="color: var(--muted); font-size: 0.8rem; margin-top: 1.5rem;">Based in Chennai, Tamil Nadu, India</p>
-  </div>
+<section class="section" id="contact">
+<h2 class="title">Contact Me</h2>
+<form>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button>Send Message</button>
+</form>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <span>© 2025 Dhilip. All rights reserved.</span>
-  <span>Digital Marketing Specialist · Chennai, India</span>
+© 2026 Dhilip | Digital Marketing Portfolio
 </footer>
-
 </body>
 </html>
+```
